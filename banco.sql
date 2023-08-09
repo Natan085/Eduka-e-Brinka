@@ -131,7 +131,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`aluno` (
   `RA` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(200) NOT NULL,
+  `nome_aluno` VARCHAR(200) NOT NULL,
+  `nome_responsavel` VARCHAR(200) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `rg` VARCHAR(12) NOT NULL,
   `sexo` CHAR('m', 'f') NOT NULL,
