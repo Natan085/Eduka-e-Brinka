@@ -28,13 +28,7 @@
     
     <label for="data_nascimento">Data de Nascimento:</label>
     <input type="date" id="data_nascimento" name="data_nascimento"><br><br>
-    
-    <label for="status">Status:</label>
-    <select id="status" name="status">
-        <option value="1">Ativo</option>
-        <option value="0">Inativo</option>
-    </select><br><br>
-    
+        
     <label for="telefone">Telefone de Contato:</label>
     <input type="text" id="telefone" name="telefone"><br><br>
     
