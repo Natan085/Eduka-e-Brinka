@@ -1,6 +1,6 @@
 <?php
-require 'conexao.php';
-require 'validacao.php';
+require 'conexao.php'; // Inclua o arquivo de conexão ao banco de dados
+require 'validacao.php'; // Inclua o arquivo de validação
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome_aluno = $_POST["nome_aluno"];
@@ -9,29 +9,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $rg = $_POST["rg"];
     $sexo = $_POST["sexo"];
     $data_nascimento = $_POST["data_nascimento"];
-    $status = $_POST["status"];
     $telefone = $_POST["telefone"];
-    $cidade = $_POST["cidade"];
-    $estado = $_POST["estado"];
-    $cep = $_POST["cep"];
+    $localizacao = $_POST["localizacao"];
+    $senha = $_POST["senha"];
     
     // Validar dados conforme necessário
-    if (empty($nome_aluno) || empty($nome_responsavel) || empty($email) || empty($rg) || empty($sexo) || empty($data_nascimento) || empty($status) || empty($telefone) || empty($cidade) || empty($estado) || empty($cep)) {
+    if (empty($nome_aluno) || empty($nome_responsavel) || empty($email) || empty($rg) || empty($sexo) || empty($data_nascimento) || empty($telefone) || empty($localizacao) || empty($senha)) {
         echo "Todos os campos devem ser preenchidos!";
-        var_dump($rg); // Depuração: Verifique o valor de $rg
     } elseif (!validarRG($rg)) {
         echo "RG inválido!";
-    } elseif (!validarSenha($_POST["senha"])) {
+    } elseif (!validarSenha($senha)) {
         echo "A senha deve conter pelo menos 8 caracteres!";
     } else {
         // Preparar a instrução SQL de inserção com prepared statement
-        $sql = "INSERT INTO aluno (nome_aluno, nome_responsavel, email, rg, sexo, data_nascimento, status, telefone, cidade, estado, cep) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO aluno (nome_aluno, nome_responsavel, email, rg, sexo, data_nascimento, telefone, localizacao, senha) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $mysqli->prepare($sql);
 
         if ($stmt) {
-            $stmt->bind_param("sssssssssss", $nome_aluno, $nome_responsavel, $email, $rg, $sexo, $data_nascimento, $status, $telefone, $cidade, $estado, $cep);
+            $stmt->bind_param("sssssssss", $nome_aluno, $nome_responsavel, $email, $rg, $sexo, $data_nascimento, $telefone, $localizacao, $senha); // Mudar aqui para $localizacao
 
             if ($stmt->execute()) {
                 echo "Cadastro realizado com sucesso!";
