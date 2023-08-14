@@ -129,23 +129,19 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`aluno`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`aluno` (
-  `RA` INT NOT NULL AUTO_INCREMENT,
-  `nome_aluno` VARCHAR(200) NOT NULL,
-  `nome_responsavel` VARCHAR(200) NOT NULL,
+CREATE TABLE `aluno` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `nome_aluno` VARCHAR(100) NOT NULL,
+  `nome_responsavel` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
-  `rg` VARCHAR(12) NOT NULL,
-  `sexo` CHAR('m', 'f') NOT NULL,
+  `rg` VARCHAR(20) NOT NULL,
+  `sexo` CHAR(1) NOT NULL,
   `data_nascimento` DATE NOT NULL,
-  `status` INT NOT NULL,
-  `secretaria_idsecretaria` INT NOT NULL,
-  PRIMARY KEY (`RA`),
-  CONSTRAINT `fk_aluno_secretaria1`
-    FOREIGN KEY (`secretaria_idsecretaria`)
-    REFERENCES `mydb`.`secretaria_virtual` (`idsecretaria`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  `telefone` VARCHAR(20) NOT NULL,
+  `localizacao` VARCHAR(100) NOT NULL,
+  `senha` VARCHAR(12) NOT NULL,
+  `data_cadastro` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 -- -----------------------------------------------------
