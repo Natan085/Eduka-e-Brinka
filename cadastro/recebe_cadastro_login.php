@@ -7,6 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome_responsavel = $_POST["nome_responsavel"];
     $email = $_POST["email"];
     $rg = $_POST["rg"];
+    $cpf = $_POST["cpf"];
     $sexo = $_POST["sexo"];
     $data_nascimento = $_POST["data_nascimento"];
     $telefone = $_POST["telefone"];
@@ -22,16 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "A senha deve conter pelo menos 8 caracteres!";
     } else {
         // Preparar a instrução SQL de inserção com prepared statement
-        $sql = "INSERT INTO aluno (nome_aluno, nome_responsavel, email, rg, sexo, data_nascimento, telefone, localizacao, senha) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO aluno (nome_aluno, nome_responsavel, email, rg, cpf, sexo, data_nascimento, telefone, localizacao, senha) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $mysqli->prepare($sql);
 
         if ($stmt) {
-            $stmt->bind_param("sssssssss", $nome_aluno, $nome_responsavel, $email, $rg, $sexo, $data_nascimento, $telefone, $localizacao, $senha); // Mudar aqui para $localizacao
+            $stmt->bind_param("ssssssssss", $nome_aluno, $nome_responsavel, $email, $rg, $cpf, $sexo, $data_nascimento, $telefone, $localizacao, $senha);
 
             if ($stmt->execute()) {
-                echo "Cadastro realizado com sucesso!";
+                $id_crianca = $stmt->insert_id; // Obtém o ID gerado para a criança
+                echo "Cadastro realizado com sucesso! Seu ID de acesso é: $id_crianca";
             } else {
                 echo "Erro na inserção: " . $stmt->error;
             }
