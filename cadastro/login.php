@@ -2,15 +2,15 @@
 require 'conexao.php'; // Inclua o arquivo de conexão ao banco de dados
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cpf = $_POST["cpf"];
+    $id_or_email = $_POST["id_or_email"];
     $senha = $_POST["senha"];
     
-    // Consultar o banco de dados para verificar o CPF e a senha
-    $sql = "SELECT id FROM aluno WHERE cpf = ? AND senha = ?";
+    // Consultar o banco de dados para verificar o ID ou e-mail e a senha
+    $sql = "SELECT id FROM aluno WHERE (id = ? OR email = ?) AND senha = ?";
     $stmt = $mysqli->prepare($sql);
 
     if ($stmt) {
-        $stmt->bind_param("ss", $cpf, $senha);
+        $stmt->bind_param("sss", $id_or_email, $id_or_email, $senha);
         $stmt->execute();
         $stmt->store_result();
 
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "Login realizado com sucesso!";
             // Aqui você pode redirecionar o usuário para a página após o login
         } else {
-            echo "CPF ou senha inválidos!";
+            echo "ID ou senha inválidos!";
         }
 
         $stmt->close();
@@ -41,8 +41,8 @@ $mysqli->close();
 <h2>Login</h2>
 
 <form method="POST" action="login.php">
-    <label for="cpf">CPF:</label>
-    <input type="text" id="cpf" name="cpf"><br><br>
+    <label for="id_or_email">ID ou E-mail:</label>
+    <input type="text" id="id_or_email" name="id_or_email"><br><br>
     
     <label for="senha">Senha:</label>
     <input type="password" id="senha" name="senha"><br><br>
