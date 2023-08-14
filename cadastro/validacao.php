@@ -47,8 +47,8 @@ function validarRG($rg) {
 }
 // validacao.php
 function validarSenha($senha) {
-    // Verificar se a senha tem pelo menos 8 caracteres
-    if (strlen($senha) < 8) {
+    // Verificar se a senha contém pelo menos um símbolo, uma letra maiúscula e uma letra minúscula
+    if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $senha) || !preg_match('/[A-Z]/', $senha) || !preg_match('/[a-z]/', $senha)) {
         return false;
     }
 
