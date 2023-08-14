@@ -28,18 +28,15 @@
     
     <label for="data_nascimento">Data de Nascimento:</label>
     <input type="date" id="data_nascimento" name="data_nascimento"><br><br>
-        
+
+    
     <label for="telefone">Telefone de Contato:</label>
     <input type="text" id="telefone" name="telefone"><br><br>
     
-    <label for="cidade">Cidade:</label>
-    <input type="text" id="cidade" name="cidade"><br><br>
-    
-    <label for="estado">Estado:</label>
-    <input type="text" id="estado" name="estado"><br><br>
-    
-    <label for="cep">CEP:</label>
-    <input type="text" id="cep" name="cep"><br><br>
+    <label for="localizacao">Localização:</label>
+    <input type="text" id="localizacao" name="localizacao"><br><br>
+
+
     <label for="senha">Senha:</label>
     <input type="password" id="senha" name="senha"><br><br>
     
