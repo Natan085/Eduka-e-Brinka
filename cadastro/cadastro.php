@@ -19,6 +19,9 @@
     
     <label for="rg">RG:</label>
     <input type="text" id="rg" name="rg"><br><br>
+
+    <label for="cpf">CPF do Responsável</label>
+    <input type="text" id="cpf" name="cpf"><br><br>
     
     <label for="sexo">Sexo:</label>
     <input type="radio" id="sexo_m" name="sexo" value="m">
