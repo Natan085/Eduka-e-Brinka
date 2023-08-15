@@ -1,0 +1,86 @@
+body {
+    margin: 0;
+    font-family: Verdana, sans-serif;
+}
+ /* Estilização do menu suspenso */
+
+ .dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 5;
+
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 0;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    background-color: #f9f9f9;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #DC143C;
+}
+
+/* Estilos do cabeçalho */
+header {
+    background-color: #DC143C;
+    /* define a cor do fundo do cabeçalho como azul escuro */
+    height: 100px;
+    /*defiine a altura do cabeçalhoo como 140 pixels */
+    display: flex;
+    /* define  o cabeçalho como um contêiner flexível */
+    align-items: center;
+    /* alinha os itens verticalmente no centro do cabeçalho */
+    justify-content: space-between;
+    /* distribui o espaço dísponivel entre os elementos do cabeçalho */
+    color: #fff;
+    /* define a cor do texto do cabeçalho como branco */
+    font-family: Verdana, sans-serif;
+    /* define a fonte do etxto no cabeçalho como Verdana */
+    font-size: 12;
+    /* define o tamanho do texto no cabeçalho como 24 pixels */
+    position: relative;
+    /* define a posição do cabeçalho como relativa */
+}
+
+
+
+
+
+/* Estilos do conteúdo do cabeçalho */
+.header-content {
+    position: absolute;
+    /* define o posicionamento do conteúdo do cabeçalho como absoluto */
+    left: 50%;
+    /* define a posição do conteúdo do cabeçalho em relação à esquerda como 50% */
+    transform: translateX(-50%);
+    /* centraliza o conteúdo horizontalmente usando uma transformação de translação */
+}
+
+
+/* Estilos do título do projeto */
+.projeto {
+    font-size: 50px;
+    /* define o tamanho do texto do título do projeto como 50 pixels */
+    text-decoration: none;
+    /* remove a decoração de texto do link de "Projeto Cidade do Saber[index]" [usado para tirar o sublinhado do texto] */
+    color: #fff;
+    /* define a cor do texto do link de "Projeto Cidade do Saber[index]" como branco */
+}
+
+
